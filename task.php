@@ -1,3 +1,4 @@
+<?php
 # 課題の回答は このファイル をご利用下さい。
 # 回答の出力を確認される際は，「php task.php」をターミナルから実行して下さい。
 
@@ -5,6 +6,8 @@ print("#####q1#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
+	$names[] = "斎藤";
+	print_r($names);
 
 echo PHP_EOL;
 
@@ -13,6 +16,9 @@ $array1 = ["dog", "cat", "fish"];
 $array2 = ["bird", "bat", "tiger"];
 
   # 以下に回答を記載
+	$array = [];
+	$array = array_merge($array1, $array2);
+	print_r($array);
 
 echo PHP_EOL;
 
@@ -20,6 +26,9 @@ print("#####q3#####".PHP_EOL);
 $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
 
   # 以下に回答を記載
+	$array = [];
+	$array = array_count_values($numbers);
+	printf('$numbersの中に"3"は%dつあります',$array[3]);
 
 echo PHP_EOL;
 
@@ -27,6 +36,13 @@ print("#####q4#####".PHP_EOL);
 $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null, "バレー"];
 
   # 以下に回答を記載
+	foreach ($sports as $key => $value) {
+		if($value === null){
+			unset($sports[$key]);
+		}
+	}
+	$sports = array_values($sports);
+	print_r($sports);
 
 echo PHP_EOL;
 
@@ -35,6 +51,20 @@ $array1 = [];
 $array2 = [1, 5, 8, 10];
 
   # 以下に回答を記載
+	if(is_array($array1) && count($array1) === 0){
+		echo 'true';
+	}else{
+		echo 'false';
+	}
+
+	echo PHP_EOL;
+
+	if(is_array($array2) && count($array2) === 0){
+		echo 'true';
+	}else{
+		echo 'false';
+	}
+
 
 echo PHP_EOL;
 
@@ -42,6 +72,10 @@ print("#####q6#####".PHP_EOL);
 $numbers1 = [1, 2, 3, 4, 5];
 
   # 以下に回答を記載
+	foreach ($numbers1 as $key => $value) {
+		$numbers1[$key] = $value * 10;
+	}
+	print_r($numbers1);
 
 echo PHP_EOL;
 
@@ -49,6 +83,10 @@ print("#####q7#####".PHP_EOL);
 $array = ["1", "2", "3", "4", "5"];
 
   # 以下に回答を記載
+	foreach ($array as $key => $value) {
+		$array[$key] = (int)$value;
+	}
+	print_r($array);
 
 echo PHP_EOL;
 
@@ -56,6 +94,12 @@ print("#####q8#####".PHP_EOL);
 $programming_languages = ["php","ruby","python","javascript"];
 
   # 以下に回答を記載
+	$upper_case_programming_languages = [];
+	foreach ($programming_languages as $key => $value) {
+		$programming_languages[$key] = ucfirst($value);
+		$upper_case_programming_languages[$key] = mb_strtoupper($value);
+	}
+
 
   # 以下は変更しないで下さい
 print_r($programming_languages);
@@ -68,6 +112,13 @@ print("#####q9#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
+	$count = 0;
+	$array = [];
+	foreach ($names as $value) {
+		$count++;
+		$array[] = sprintf('会員No.%d %s',$count,$value);
+	}
+	print_r($array);
 
 echo PHP_EOL;
 
@@ -138,9 +189,9 @@ class User
 $user1 = new User("神里",32,"男");
 $user2 = new User("あじー",32,"男");
 
-$user1->info();
+//$user1->info();
 print("-------------".PHP_EOL);
-$user2->info();
+//$user2->info();
 
 echo PHP_EOL;
 
@@ -148,11 +199,11 @@ print("#####q18#####".PHP_EOL);
 
   # コードを追加
 
-$man1 = new Man("あじー",32);
-$man2 = new Man("ゆたぼん",10);
+//$man1 = new Man("あじー",32);
+//$man2 = new Man("ゆたぼん",10);
 
-$man1->introduce();
-$man2->introduce();
+//$man1->introduce();
+//$man2->introduce();
 
 echo PHP_EOL;
 
@@ -169,7 +220,7 @@ class Item{
   # 以下は変更しないで下さい
 
 $book = new Item("ゼロ秒思考");
-print($book->name.PHP_EOL);
+//print($book->name.PHP_EOL);
 
 echo PHP_EOL;
 
@@ -183,9 +234,9 @@ class Human
 
 class Zoo
 {
-    
+
   # コードを追加
-    
+
 }
 
 $zoo = new Zoo("旭山動物園",[ "infant" => 0, "children" => 400, "adult" => 800, "senior" => 500]);
@@ -198,7 +249,8 @@ $human4 = new Human("ぎん",108);
 $humans = [ $human1, $human2, $human3, $human4 ];
 
 foreach($humans as $human){
-  $zoo->info_entry_fee($human);
+//  $zoo->info_entry_fee($human);
 }
 
 echo PHP_EOL;
+?>
