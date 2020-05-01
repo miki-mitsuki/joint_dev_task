@@ -126,6 +126,15 @@ print("#####q10#####".PHP_EOL);
 $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","うに丼"];
 
   # 以下に回答を記載
+	foreach ($foods as $value) {
+		if(preg_match("/うに/", $value) === 1){
+			printf('%sは好物です',$value);
+			echo PHP_EOL;
+		}else {
+			printf('%sはまぁまぁ好きです',$value);
+			echo PHP_EOL;
+		}
+	}
 
 echo PHP_EOL;
 
@@ -133,6 +142,29 @@ print("#####q11#####".PHP_EOL);
 $sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]];
 
   # 以下に回答を記載
+	echo "ユーザーの趣味一覧".PHP_EOL;
+
+	$count = 0;
+	$array = [];
+	foreach ($sports as $value) {
+		if(is_array($value)){
+			foreach ($value as $val) {
+				if(!in_array($val,$array)){
+					$array[] = $val;
+					$count++;
+					printf('No%d %s',$count,$val);
+					echo PHP_EOL;
+				}
+			}
+		}else{
+			if(!in_array($value,$array)){
+				$array[] = $value;
+				$count++;
+				printf('No%d %s',$count,$value);
+				echo PHP_EOL;
+			}
+		}
+	}
 
 echo PHP_EOL;
 
@@ -140,6 +172,11 @@ print("#####q12#####".PHP_EOL);
 $data = [ "user" => [ "name" => "satou", "age" => 33 ] ];
 
   # 以下に回答を記載
+	$array = [];
+	$array = array_column($data,"name");
+	foreach ($array as $value) {
+		echo $value;
+	}
 
 echo PHP_EOL;
 
@@ -148,6 +185,10 @@ $user_data = [ "name" => "神里", "age" => 31, "address" => "埼玉"];
 $update_data = [ "age" => 32, "address" => "沖縄" ];
 
   # 以下に回答を記載
+	foreach ($update_data as $key => $value) {
+		$user_data[$key] = $value;
+	}
+	print_r($user_data);
 
 echo PHP_EOL;
 
@@ -155,6 +196,11 @@ print("#####q14#####".PHP_EOL);
 $data = [ "name" => "satou", "age" => 33, "address" => "saitama", "hobby" => "soccer", "email" => "hoge@fuga.com" ];
 
   # 以下に回答を記載
+	$array = [];
+	foreach ($data as $key => $value) {
+		$array[] = $key;
+	}
+	print_r($array);
 
 echo PHP_EOL;
 
@@ -163,6 +209,19 @@ $data1 = [ "name" => "saitou", "hobby" => "soccer", "age" => 33, "role" => "admi
 $data2 = [ "name" => "yamada", "hobby" => "baseball", "role" => "normal" ];
 
   # 以下に回答を記載
+	if(array_key_exists("age",$data1)){
+		echo 'OK';
+	}else{
+		echo 'NG';
+	}
+
+	echo PHP_EOL;
+
+	if(array_key_exists("age",$data2)){
+		echo 'OK';
+	}else{
+		echo 'NG';
+	}
 
 echo PHP_EOL;
 
@@ -175,6 +234,10 @@ $users = [
 ];
 
   # 以下に回答を記載
+	foreach ($users as $value) {
+		printf('私の名前は%sです。年齢は%d歳です。',$value['name'],$value['age']);
+		echo PHP_EOL;
+	}
 
 echo PHP_EOL;
 
